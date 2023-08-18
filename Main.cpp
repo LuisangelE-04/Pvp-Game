@@ -30,6 +30,7 @@ void ChosePlayer(string p1, string p2, Character*& player1, Character*& player2)
 	cin >> nextStep;
 	if (isalpha(nextStep[0]) || isdigit(nextStep[0])) {
 		cout << "\033[2J\033[1;1H";
+		titleScreen();
 	}
 
 	int playerChoice;
@@ -68,6 +69,14 @@ void ChosePlayer(string p1, string p2, Character*& player1, Character*& player2)
 			
 			cout << player2->getName() << " chose " << player2->getCharacter() << endl << endl; // Displays player 2 avatar
 		}
+	}
+	cout << endl << "Type any character to continue." << endl;
+	nextStep = "";
+	cin >> nextStep;
+	if (isalpha(nextStep[0]) || isdigit(nextStep[0])) {
+		cout << "\033[2J\033[1;1H";
+		titleScreen();
+		//call next function...
 	}
 }
 
