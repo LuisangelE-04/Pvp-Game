@@ -1,5 +1,35 @@
 #include "Character.h"
 
+void Character::attack(Character*& other, int& damage)
+{
+	int totHP;
+	damage = 0;
+	totHP = other->getHP();
+	damage = power + level;
+	totHP -= damage;
+	other->setHP(totHP);
+}
+
+void Character::powerAttack(Character*& other, int& damage)
+{
+	int totHP;
+	damage = 0;
+	totHP = other->getHP();
+	damage = power + level;
+	totHP -= damage + 5;
+	other->setHP(totHP);
+}
+
+void Character::setAttack(string name)
+{
+	attackName = name;
+}
+
+string Character::getAttackName()
+{
+	return attackName;
+}
+
 void Character::addXP()
 {
 	XP += 50 + HP;

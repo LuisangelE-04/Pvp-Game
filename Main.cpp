@@ -80,6 +80,40 @@ void ChosePlayer(string p1, string p2, Character*& player1, Character*& player2)
 	}
 }
 
+void attackChooser(Character* player, int turn, int& choice)
+{
+	cout << endl << endl;
+	cout << "                " << "Player " << turn << ", Choose Attack!" << endl;
+	cout << "       " << "Type 1 for Quick Attack. *Guareenteed Damge*" << endl;
+	cout << "" << "Type 2 for Heavy Attack. *More damage but risks personal health" << endl << endl;
+	cin >> choice;
+
+	if (player->getCharacter() == "Wizard!") {
+		if (choice <= 1) {
+			player->setAttack("Quick-Cast!");
+		}
+		if (choice >= 2) {
+			player->setAttack("Fire-Ball!");
+		}
+	}
+	if (player->getCharacter() == "Archer!") {
+		if (choice <= 1) {
+			player->setAttack("Quick-Shot!");
+		}
+		if (choice >= 2) {
+			player->setAttack("Multi-Shot");
+		}
+	}
+	if (player->getCharacter() == "Valkyrie!") {
+		if (choice <= 1) {
+			player->setAttack("Sword-Swing");
+		}
+		if (choice >= 2) {
+			player->setAttack("Multi-Sword-Spin");
+		}
+	}
+}
+
 int main()
 {
 	string p1, p2;
