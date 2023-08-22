@@ -76,6 +76,7 @@ void ChosePlayer(string p1, string p2, Character*& player1, Character*& player2)
 	if (isalpha(nextStep[0]) || isdigit(nextStep[0])) {
 		cout << "\033[2J\033[1;1H";
 		titleScreen();
+		cout << endl;
 		//call next function...
 	}
 }
