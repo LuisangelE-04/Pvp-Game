@@ -19,9 +19,13 @@ private:
 
 public:
 	Character(int _HP = 0, int _power = 0, int _level = 0, int _XP = 0, string _playerName = "NO-PLAYER") : HP(_HP), power(_power), level(_level), XP(_XP), playerName(_playerName) {}
+	bool isAlive() const { return HP > 0;  }
 
-	/*void attack(Character*& other, int& damage);
-	void powerAttack(Character*& other, int& damage);*/
+	void attack(Character*& other, int& damage);
+	void powerAttack(Character*& other, int& damage);
+
+	void setAttack(string name);
+	string getAttackName();
 	
 	void addXP();
 	int getXP();
