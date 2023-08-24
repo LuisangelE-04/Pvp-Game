@@ -4,6 +4,8 @@
 #include "Wizard.h"
 #include "Archer.h"
 #include "Valkyrie.h"
+#include "GenFunctions.h"
+#include "Duel.h"
 
 void titleScreen()
 {
@@ -20,6 +22,14 @@ void titleScreen()
 	cout << "          " << "| |  | |" << "|  __| | |  | |" << "| |" << endl;
 	cout << "          " << "| |__/ /" << "| |___ | \\__/ |" << "| |____" << endl;
 	cout << "          " << "|_____/ " << "|_____| \\____/ " << "|______|" << endl;
+}
+
+void FightInfo(Character*& p1, Character*& p2)
+{
+	cout << endl << endl;
+	cout << p1->getName() << " the " << p1->getCharacter();
+	cout << "     vs.     ";
+	cout << p2->getName() << " the " << p2->getCharacter() << endl << endl << endl;
 }
 
 void ChosePlayer(string p1, string p2, Character*& player1, Character*& player2)
@@ -77,6 +87,7 @@ void ChosePlayer(string p1, string p2, Character*& player1, Character*& player2)
 		cout << "\033[2J\033[1;1H";
 		titleScreen();
 		//call next function...
+		FightInfo(player1, player2);
 	}
 }
 
@@ -84,8 +95,8 @@ void attackChooser(Character* player, int turn, int& choice)
 {
 	cout << endl << endl;
 	cout << "                " << "Player " << turn << ", Choose Attack!" << endl;
-	cout << "       " << "Type 1 for Quick Attack. *Guareenteed Damge*" << endl;
-	cout << "" << "Type 2 for Heavy Attack. *More damage but risks personal health" << endl << endl;
+	cout << "       " << "Type 1 for Quick Attack!!*" << endl;
+	cout << "" << "Type 2 for Heavy Attack!" << endl << endl;
 	cin >> choice;
 
 	if (player->getCharacter() == "Wizard!") {
@@ -114,6 +125,7 @@ void attackChooser(Character* player, int turn, int& choice)
 	}
 }
 
+
 int main()
 {
 	string p1, p2;
@@ -129,6 +141,13 @@ int main()
 
 	ChosePlayer(p1, p2, player1, player2);
 
+	string startLoop;
+	cout << endl << endl << "        " << "Type anything to begin the duel!!!" << endl;
+	cin >> startLoop;
+	if (isalpha(startLoop[0]) || isdigit(startLoop[0])) {
+		Duel Match(player1, player2);
+		Match.Start();
+	}
 
 	// delete memory after saving the data into a file 
 	delete player1;
